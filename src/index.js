@@ -6,17 +6,6 @@ import App from "./App";
 
 console.log("📌 Index.js запущен!"); // Проверка
 
-const ensureHashRouting = () => {
-    if (
-        window.location.pathname.startsWith("/lottgo") &&
-        !window.location.hash
-    ) {
-        window.location.replace(`/lottgo`);
-    }
-};
-
-ensureHashRouting();
-
 const rootElement = document.getElementById("root");
 ReactDOM.render(
     <HashRouter>
