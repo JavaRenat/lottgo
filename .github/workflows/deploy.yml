@@ -34,3 +34,4 @@ jobs:
         with:
           branch: gh-pages  # Ветка, куда будет деплоиться сайт
           folder: build      # Папка с результатами билда (для React/Vue)
+          token: ${{ secrets.GH_PAT }}
