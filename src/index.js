@@ -6,7 +6,7 @@ import App from "./App";
 
 const rootElement = document.getElementById("root");
 ReactDOM.render(
-    <HashRouter>
+    <HashRouter basename="/lottgo">
         <App/>
     </HashRouter>,
     rootElement
