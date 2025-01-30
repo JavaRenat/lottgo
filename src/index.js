@@ -4,6 +4,8 @@ import "react-alice-carousel/lib/scss/alice-carousel.scss";
 import {HashRouter} from "react-router-dom";
 import App from "./App";
 
+console.log("📌 Index.js запущен!"); // Проверка
+
 const ensureHashRouting = () => {
     if (
         window.location.pathname.startsWith("/lottgo") &&
