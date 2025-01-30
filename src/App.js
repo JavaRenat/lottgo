@@ -7,6 +7,7 @@ import Trending from "./pages/Trending/Trending";
 import Movies from "./pages/Movies/Movies";
 import Series from "./pages/Series/Series";
 import Search from "./pages/Search/Search";
+import { useEffect } from "react";
 
 export default function App() {
     useEffect(() => {
