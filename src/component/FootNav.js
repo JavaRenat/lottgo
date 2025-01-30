@@ -1,16 +1,11 @@
-import React, { useEffect } from "react";
-import { makeStyles } from "@material-ui/core/styles";
+import React, {useEffect} from "react";
+import {makeStyles} from "@material-ui/core/styles";
 import BottomNavigation from "@material-ui/core/BottomNavigation";
 import BottomNavigationAction from "@material-ui/core/BottomNavigationAction";
-import WhatshotIcon from "@material-ui/icons/Whatshot";
-import MovieIcon from "@material-ui/icons/Movie";
-import SearchIcon from "@material-ui/icons/Search";
-import TvIcon from "@material-ui/icons/Tv";
 import CheckCircleIcon from '@mui/icons-material/CheckCircle';
-import CasinoIcon from '@mui/icons-material/Casino';
 import FavoriteIcon from '@mui/icons-material/Favorite';
 import SettingsIcon from '@mui/icons-material/Settings';
-import { useNavigate } from "react-router-dom";
+import {useNavigate} from "react-router-dom";
 
 const useStyles = makeStyles({
   root: {

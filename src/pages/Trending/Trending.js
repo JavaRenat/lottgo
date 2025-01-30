@@ -17,7 +17,7 @@ export default function Trending() {
         const fetchTrending = async () => {
             let data;
             if (useMockData) {
-                const response = await fetch("/mock/trending.json");
+                const response = await fetch(`${process.env.PUBLIC_URL}/mock/trending.json`);
                 data = await response.json();
             } else {
                 const response = await axios.get(
