@@ -11,7 +11,7 @@ const ensureHashRouting = () => {
         window.location.pathname.startsWith("/lottgo") &&
         !window.location.hash
     ) {
-        window.location.replace(`/lottgo/#/`);
+        window.location.replace(`/lottgo`);
     }
 };
 
