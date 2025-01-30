@@ -2,7 +2,7 @@ import Header from "./component/header/Header";
 import "./styles.scss";
 import FootNav from "./component/FootNav";
 import {Container} from "@material-ui/core";
-import { Route, Routes, HashRouter } from "react-router-dom";
+import {Route, Routes} from "react-router-dom";
 import Trending from "./pages/Trending/Trending";
 import Movies from "./pages/Movies/Movies";
 import Series from "./pages/Series/Series";
@@ -15,7 +15,7 @@ export default function App() {
 
 
     return (
-        <HashRouter>
+        <>
             <Header/>
             <div className="app">
                 <Container>
@@ -28,6 +28,6 @@ export default function App() {
                 </Container>
             </div>
             <FootNav/>
-        </HashRouter>
+        </>
     );
 }
