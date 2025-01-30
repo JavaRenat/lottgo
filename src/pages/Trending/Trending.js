@@ -10,7 +10,7 @@ const useMockData = true; // Переключатель между API и мок
 export default function Trending() {
     const [page, setPage] = useState(1);
     const [content, setContent] = useState([]);
-    const [numOfPages, setNumOfPages] = useState(10); // Количество страниц
+    const [numOfPages, setNumOfPages] = useState(1); // Количество страниц
 
     useEffect(() => {
         window.scroll(0, 0);

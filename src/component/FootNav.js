@@ -6,6 +6,7 @@ import CheckCircleIcon from '@mui/icons-material/CheckCircle';
 import FavoriteIcon from '@mui/icons-material/Favorite';
 import SettingsIcon from '@mui/icons-material/Settings';
 import {useNavigate} from "react-router-dom";
+import SvgIcon from '@mui/material/SvgIcon';
 
 const useStyles = makeStyles({
   root: {
@@ -16,6 +17,14 @@ const useStyles = makeStyles({
     zIndex: 100
   }
 });
+
+function SpadeIcon(props) {
+  return (
+      <SvgIcon {...props} viewBox="0 0 24 24">
+        <path d="M12 2C9 7 3 10 3 14a5 5 0 009 3.5V20H9v2h6v-2h-3v-2.5A5 5 0 0021 14c0-4-6-7-9-12z" fill="black" />
+      </SvgIcon>
+  );
+}
 
 export default function SimpleBottomNavigation() {
   const classes = useStyles();
@@ -44,7 +53,7 @@ export default function SimpleBottomNavigation() {
       <BottomNavigationAction
         style={{ color: "black" }}
         label="Сompleted Chances"
-        icon={<CheckCircleIcon />}
+        icon={<SpadeIcon />}
       />
       <BottomNavigationAction
         style={{ color: "grey" }}
