@@ -20,12 +20,12 @@ export default function SingeContext({ content }) {
       />
       <img
         className="poster"
-        src={`${img_300}/${poster_path}` || unavailable}
+        src={`photos/${poster_path}` || unavailable}
         alt={title}
       />
       <b className="title">{title}</b>
       <div className="subTitle">
-        <span>{media_type === "tv" ? "Tv Series " : "Movies "}</span>
+        <span>{media_type === "tv" ? "Tv Series " : "Until "}</span>
         <span>{release_date}</span>
       </div>
     </ContentModal>

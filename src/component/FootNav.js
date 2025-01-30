@@ -6,6 +6,10 @@ import WhatshotIcon from "@material-ui/icons/Whatshot";
 import MovieIcon from "@material-ui/icons/Movie";
 import SearchIcon from "@material-ui/icons/Search";
 import TvIcon from "@material-ui/icons/Tv";
+import CheckCircleIcon from '@mui/icons-material/CheckCircle';
+import CasinoIcon from '@mui/icons-material/Casino';
+import FavoriteIcon from '@mui/icons-material/Favorite';
+import SettingsIcon from '@mui/icons-material/Settings';
 import { useNavigate } from "react-router-dom";
 
 const useStyles = makeStyles({
@@ -38,25 +42,25 @@ export default function SimpleBottomNavigation() {
       className={classes.root}
     >
       <BottomNavigationAction
-        style={{ color: "white" }}
-        label="Trending"
-        icon={<WhatshotIcon />}
+        style={{ color: "red" }}
+        label="Get chance"
+        icon={<FavoriteIcon  />}
       />
       <BottomNavigationAction
-        style={{ color: "white" }}
-        label="Movies"
-        icon={<MovieIcon />}
+        style={{ color: "black" }}
+        label="Сompleted Chances"
+        icon={<CheckCircleIcon />}
       />
       <BottomNavigationAction
-        style={{ color: "white" }}
-        label="TV Serial"
-        icon={<TvIcon />}
+        style={{ color: "grey" }}
+        label="Settings"
+        icon={<SettingsIcon  />}
       />
-      <BottomNavigationAction
-        style={{ color: "white" }}
-        label="Search"
-        icon={<SearchIcon />}
-      />
+      {/*<BottomNavigationAction*/}
+      {/*  style={{ color: "white" }}*/}
+      {/*  label="Search"*/}
+      {/*  icon={<SearchIcon />}*/}
+      {/*/>*/}
     </BottomNavigation>
   );
 }
