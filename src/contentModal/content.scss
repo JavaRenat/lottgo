@@ -1,0 +1,116 @@
+// .contentModal{
+
+//   .contentModal__portrait{
+//     object-fit: cover;
+//     border-radius: 10px;
+//   }
+//   .contentModal__landscap{
+//     display: none;
+//     object-fit: cover;
+//     border-radius: 10px;
+//   }
+//   .contentModal__about{
+    
+//     .contentModal__title{
+
+//     }
+//     .tagline{
+//       padding-bottom: 10px;
+//       align-self: center
+//     }
+//     .contentModal__decription{
+
+//     }
+//   }
+// }
+@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@100&display=swap");
+
+.contentModal__landscape {
+  object-fit: contain;
+  border-radius: 10px;
+}
+
+.contentModal__portrait {
+  display: none;
+  object-fit: contain;
+  border-radius: 10px;
+}
+
+.tagline {
+  padding-bottom: 10px;
+  align-self: center;
+}
+
+.contentModal {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 100%;
+  width: 100%;
+  overflow-y: scroll;
+  scrollbar-width: none;
+}
+
+.contentModal::-webkit-scrollbar {
+  display: none;
+}
+
+.contentModal__about {
+  padding: 10px;
+  width: 95%;
+  height: 90%;
+  display: flex;
+  flex-direction: column;
+  font-family: "Roboto", sans-serif;
+  justify-content: space-evenly;
+  font-weight: 300;
+}
+
+.contentModal__title {
+  height: 12%;
+  font-size: 5vw;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.contentModal__decription {
+  display: flex;
+  height: 40%;
+  overflow-y: scroll;
+  padding: 15px;
+  border-radius: 20px;
+  scrollbar-width: thin; /* Firefox */
+  box-shadow: inset 0 0 5px #000000;
+  text-align: justify;
+}
+
+.contentModal__description::-webkit-scrollbar {
+  display: none;
+}
+
+@media (min-width: 835px) {
+  .contentModal__landscape {
+    display: none;
+  }
+  .contentModal__portrait {
+    display: flex;
+    width: 38%;
+  }
+  .contentModal {
+    flex-direction: row;
+    justify-content: space-around;
+    padding: 10px 0;
+  }
+  .contentModal__about {
+    width: 58%;
+    padding: 0;
+    height: 100%;
+  }
+  .contentModal__title {
+    font-size: 3.5vw;
+  }
+  .contentModal__decription {
+    font-size: 22px;
+  }
+}
