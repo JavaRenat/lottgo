@@ -35,3 +35,78 @@
     width: 46%;
   }
 }
+.time-container {
+  position: relative;
+  display: inline-block;
+  width: auto;
+  padding: 10px;
+}
+
+///* Текстовое поле */
+//.time-box {
+//  display: inline-flex;
+//  padding: 8px 16px;
+//  border-radius: 23px;
+//  background-color: #222;
+//  color: #ffcc00;
+//  font-weight: bold;
+//  font-size: 16px;
+//  position: relative;
+//  text-align: center;
+//  min-width: 120px;
+//  min-height: 46px;
+//  align-items: center;
+//  justify-content: center;
+//}
+
+/* SVG индикатор */
+.indicator {
+  position: absolute;
+  top: -2px;
+  left: -2px;
+  width: calc(100% + 4px);
+  height: calc(100% + 4px);
+  z-index: 1;
+}
+
+/* Бесконечный бегущий индикатор */
+.indicator-path {
+  animation: dash-loop 2s linear infinite;
+}
+
+/* Бесшовная анимация движения по кругу */
+@keyframes dash-loop {
+  0% {
+    stroke-dashoffset: 600;
+  }
+  100% {
+    stroke-dashoffset: 0;
+  }
+}
+
+/* Контейнер для кнопки */
+.button-container {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  padding: 5px 0; /* Добавляем небольшой отступ сверху и снизу */
+}
+
+/* Кнопка "Играть | $Цена" */
+.play-button {
+  width: 90%; /* Делаем кнопку почти на всю ширину */
+  max-width: 300px; /* Ограничиваем максимальную ширину */
+  background-color: #ffcc00 !important;
+  color: black !important;
+  font-weight: bold !important;
+  border-radius: 20px !important;
+  padding: 12px 20px !important;
+  font-size: 16px !important;
+  text-transform: none !important;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  white-space: nowrap;
+  min-height: 32px !important; /* Явно задаем минимальную высоту */
+  line-height: 1 !important; /* Убираем лишнее пространство внутри кнопки */
+}
