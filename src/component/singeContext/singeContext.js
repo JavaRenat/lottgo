@@ -4,8 +4,10 @@ import ContentModal from "../../contentModal/ContentModal";
 import "./singe.scss";
 import { useEffect, useState } from "react";
 import { CircularProgress } from "@mui/material";
+import { useTranslation } from "react-i18next";
 
 export default function SingeContext({content}) {
+    const { t } = useTranslation();
     const {
         id,
         poster_path,
@@ -26,7 +28,7 @@ export default function SingeContext({content}) {
     }, [bitcoin_price_at]);
 
     const updateRemainingTime = () => {
-        setTimeLeft(getTimeLeftString(bitcoin_price_at));
+        setTimeLeft(getTimeLeftString(bitcoin_price_at, t));
     };
 
     return (
@@ -41,15 +43,11 @@ export default function SingeContext({content}) {
                 alt={title}
             />
             <b className="title">{title}</b>
-            {/*<div className="subTitle">*/}
-            {/*    <span>{"₿ at:"}</span>*/}
-            {/*    <span>{bitcoin_price_at}</span>*/}
-            {/*</div>*/}
             <div className="subTitle">
                 <div className="time-container">
                     {/* Текстовое поле */}
                     <div className="time-box">
-                        <span>₿ {timeLeft}</span>
+                        <span>₿ {t("through")} {timeLeft}</span>
                     </div>
 
                     {/* SVG-анимация без разрывов */}
@@ -65,7 +63,7 @@ export default function SingeContext({content}) {
             </div>
             <div className="button-container">
                 <Button variant="contained" className="play-button">
-                    Играть | ${participation_price_usd}
+                    {t("play")} | ${participation_price_usd}
                 </Button>
             </div>
         </ContentModal>
@@ -73,12 +71,12 @@ export default function SingeContext({content}) {
 }
 
 // Функция для вычисления оставшегося времени с точностью до секунды
-function getTimeLeftString(dateStr) {
+function getTimeLeftString(dateStr, t) {
     const targetDate = new Date(dateStr);
     const now = new Date();
     const diff = targetDate - now;
 
-    if (diff <= 0) return "Срок истёк";
+    if (diff <= 0) return t("expired");
 
     const seconds = Math.floor((diff / 1000) % 60);
     const minutes = Math.floor((diff / 1000 / 60) % 60);
@@ -87,10 +85,10 @@ function getTimeLeftString(dateStr) {
     const weeks = Math.floor(days / 7);
     const months = Math.floor(days / 30);
 
-    if (months > 0) return `${months} мес. ${days % 30} дн.`;
-    if (weeks > 0) return `${weeks} нед. ${days % 7} дн.`;
-    if (days > 0) return `${days} дн. ${hours} ч.`;
-    if (hours > 0) return `${hours} ч. ${minutes} мин.`;
-    if (minutes > 0) return `${minutes} мин. ${seconds} сек.`;
-    return `${seconds} сек.`;
+    if (months > 0) return `${months} ${t("months")} ${days % 30} ${t("days")}`;
+    if (weeks > 0) return `${weeks} ${t("weeks")} ${days % 7} ${t("days")}`;
+    if (days > 0) return `${days} ${t("days")} ${hours} ${t("hours")}`;
+    if (hours > 0) return `${hours} ${t("hours")} ${minutes} ${t("minutes")}`;
+    if (minutes > 0) return `${minutes} ${t("minutes")} ${seconds} ${t("seconds")}`;
+    return `${seconds} ${t("seconds")}`;
 }

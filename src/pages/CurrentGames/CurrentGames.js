@@ -2,12 +2,14 @@ import axios from "axios";
 import {useEffect, useState} from "react";
 import SingeContext from "../../component/singeContext/singeContext";
 import CustomPagination from "../../component/pagination/CustomPagination";
-import "./trending.scss";
+import "./CurrentGames.scss";
+import {useTranslation} from "react-i18next";
 
 const useMockData = true; // Переключатель между API и моковыми данными
 
 
-export default function Trending() {
+export default function CurrentGames() {
+    const { t } = useTranslation();
     const [page, setPage] = useState(1);
     const [content, setContent] = useState([]);
     const [numOfPages, setNumOfPages] = useState(1); // Количество страниц
@@ -34,7 +36,7 @@ export default function Trending() {
 
     return (
         <div>
-            <span className="pageTitle">Current chances</span>
+            <span className="pageTitle">{t("cur_games")}</span>
             <div className="trending">
                 {content.map((c) => (
                     <SingeContext key={c.id} content={c}/>

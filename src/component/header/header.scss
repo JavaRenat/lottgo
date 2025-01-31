@@ -1,21 +1,83 @@
-.header{
+.header-container {
   width: 100%;
-  cursor: pointer;
   position: fixed;
   display: flex;
-  justify-content: center;
-  text-transform: uppercase;
+  align-items: center;
+  justify-content: space-between;
   background: #39445a;
-  font-family:"Montserrat", sans-serif;
-  font-size: 5vw;
-  padding-bottom: 15px;
+  font-family: "Montserrat", sans-serif;
+  padding: 10px 20px;
   box-shadow: 0px 1px 5px black;
   color: white;
   z-index: 100;
 }
-@media (max-width : 1000px){
-  .header{
-    padding-top: 15px;
-    font-size: 6.4vw;
+
+/* Логотип слева */
+.header-logo {
+  cursor: pointer;
+  font-size: 3vw;
+  text-align: left;
+  font-weight: bold;
+}
+
+/* Обычный текст (не uppercase) */
+.normal-text {
+  text-transform: none;
+  font-weight: normal;
+}
+
+/* Число до запятой */
+.price-integer {
+  color: white;
+  font-weight: bold;
+}
+
+/* Разноцветные цифры (4 до запятой + 2 после запятой) */
+.price-integer span,
+.price-decimal span {
+  font-weight: bold;
+  animation: colorChange 1.5s infinite alternate;
+}
+
+/* Анимация плавного изменения цвета */
+@keyframes colorChange {
+  0% { filter: brightness(1.2); }
+  100% { filter: brightness(0.8); }
+}
+
+/* Контейнер для выбора языка */
+.language-container {
+  display: flex;
+  align-items: center;
+}
+
+/* Выбор языка */
+.language-select {
+  font-size: 2vw;
+  padding: 5px;
+  background-color: #333;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  outline: none;
+  text-align: center;
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+}
+
+/* Адаптив */
+@media (max-width: 1000px) {
+  .header-container {
+    padding: 15px;
+  }
+
+  .header-logo {
+    font-size: 4vw;
+  }
+
+  .language-select {
+    font-size: 5vw;
   }
 }

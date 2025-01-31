@@ -1,0 +1,22 @@
+{
+  "header": {
+    "title": "Current chances"
+  },
+  "price": "Price",
+  "bitcoin_at": "₿ At",
+  "play": "Play",
+  "expired": "Expired",
+  "months": "months",
+  "weeks": "weeks",
+  "days": "days",
+  "hours": "hours",
+  "minutes": "minutes",
+  "seconds": "seconds",
+  "get_chance": "Current games",
+  "completed_chances": "Completed games",
+  "settings": "Settings",
+  "search": "Search",
+  "cur_games" : "Current games",
+  "through" : "in",
+  "now" : "now:"
+}

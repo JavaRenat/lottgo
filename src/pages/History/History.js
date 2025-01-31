@@ -5,7 +5,7 @@ import CustomPagination from "../../component/pagination/CustomPagination";
 import SingeContext from "../../component/singeContext/singeContext";
 import { useGenres } from "../../hooks/useGenres";
 
-export default function Movie() {
+export default function History() {
   const [content, setContent] = useState([]);
   const [page, setPage] = useState(1);
   const [numOfPage, setNumOfPage] = useState();

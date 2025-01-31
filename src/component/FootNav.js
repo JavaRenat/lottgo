@@ -7,6 +7,7 @@ import FavoriteIcon from '@mui/icons-material/Favorite';
 import SettingsIcon from '@mui/icons-material/Settings';
 import {useNavigate} from "react-router-dom";
 import SvgIcon from '@mui/material/SvgIcon';
+import { useTranslation } from "react-i18next";
 
 const useStyles = makeStyles({
   root: {
@@ -27,14 +28,15 @@ function SpadeIcon(props) {
 }
 
 export default function SimpleBottomNavigation() {
+  const { t } = useTranslation();
   const classes = useStyles();
   const [value, setValue] = React.useState(0);
   const navi = useNavigate();
   useEffect(() => {
     if (value === 0) return navi("/");
-    else if (value === 1) return navi("/movies");
-    else if (value === 2) return navi("/series");
-    else if (value === 3) return navi("/search");
+    else if (value === 1) return navi("/history");
+    else if (value === 2) return navi("/settings");
+    // else if (value === 3) return navi("/search");
   }, [value, navi]);
   return (
     <BottomNavigation
@@ -46,25 +48,20 @@ export default function SimpleBottomNavigation() {
       className={classes.root}
     >
       <BottomNavigationAction
-        style={{ color: "red" }}
-        label="Get chance"
-        icon={<FavoriteIcon  />}
+          style={{ color: "red" }}
+          label={t("get_chance")}
+          icon={<FavoriteIcon />}
       />
       <BottomNavigationAction
-        style={{ color: "black" }}
-        label="Сompleted Chances"
-        icon={<SpadeIcon />}
+          style={{ color: "black" }}
+          label={t("completed_chances")}
+          icon={<SpadeIcon />}
       />
       <BottomNavigationAction
-        style={{ color: "grey" }}
-        label="Settings"
-        icon={<SettingsIcon  />}
+          style={{ color: "grey" }}
+          label={t("settings")}
+          icon={<SettingsIcon />}
       />
-      {/*<BottomNavigationAction*/}
-      {/*  style={{ color: "white" }}*/}
-      {/*  label="Search"*/}
-      {/*  icon={<SearchIcon />}*/}
-      {/*/>*/}
     </BottomNavigation>
   );
 }

@@ -3,11 +3,12 @@ import "./styles.scss";
 import FootNav from "./component/FootNav";
 import {Container} from "@material-ui/core";
 import {Route, Routes} from "react-router-dom";
-import Trending from "./pages/Trending/Trending";
-import Movies from "./pages/Movies/Movies";
+import CurrentGames from "./pages/CurrentGames/CurrentGames";
+import History from "./pages/History/History";
 import Series from "./pages/Series/Series";
 import Search from "./pages/Search/Search";
 import { useEffect } from "react";
+import "./i18n";  // Подключаем i18n
 
 export default function App() {
     useEffect(() => {
@@ -21,10 +22,9 @@ export default function App() {
             <div className="app">
                 <Container>
                     <Routes>
-                        <Route path="/" element={<Trending/>}/>
-                        <Route path="/movies" element={<Movies/>}/>
-                        <Route path="/series" element={<Series/>}/>
-                        <Route path="/search" element={<Search/>}/>
+                        <Route path="/" element={<CurrentGames/>}/>
+                        <Route path="/history" element={<History/>}/>
+                        <Route path="/settings" element={<Series/>}/>
                     </Routes>
                 </Container>
             </div>

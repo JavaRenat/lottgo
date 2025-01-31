@@ -1,31 +1,11 @@
-import React, {useEffect, useState} from "react";
+import React from "react";
 import {makeStyles} from "@material-ui/core/styles";
-import {img_500, unavailable, unavailableLandscape} from "../config/config";
-import {Backdrop, Button, Fade, Modal} from "@material-ui/core";
-import axios from "axios";
-import YouTubeIcon from "@material-ui/icons/YouTube";
+import {unavailable, unavailableLandscape} from "../config/config";
+import {Backdrop, Fade, Modal} from "@material-ui/core";
 import "./content.scss";
 import Carousel from "../component/carousel/Carousel";
 import CloseIcon from "@material-ui/icons/Close";
 import {IconButton} from "@mui/material"; // Иконка закрытия
-
-// const useStyles = makeStyles((theme) => ({
-//     modal: {
-//         display: "flex",
-//         alignItems: "center",
-//         justifyContent: "center"
-//     },
-//     paper: {
-//         width: "100%",
-//         height: "80%",
-//         background: "#39445a",
-//         border: "1px solod #282c34",
-//         borderRadius: 10,
-//         color: "white",
-//         boxShadow: theme.shadows[5],
-//         padding: theme.spacing(1, 1, 3)
-//     }
-// }));
 
 const useStyles = makeStyles((theme) => ({
     modal: {
@@ -51,8 +31,6 @@ const useStyles = makeStyles((theme) => ({
 export default function ContentModal({children, content, id}) {
     const classes = useStyles();
     const [open, setOpen] = React.useState(false);
-    // const [content, setContent] = useState();
-    // const [video, setVideo] = useState();
 
     const handleOpen = () => {
         setOpen(true);

@@ -1,0 +1,22 @@
+{
+  "header": {
+    "title": "Текущие игры"
+  },
+  "price": "Цена",
+  "bitcoin_at": "₿ на",
+  "play": "Играть",
+  "expired": "Срок истёк",
+  "months": "мес.",
+  "weeks": "нед.",
+  "days": "дн.",
+  "hours": "ч.",
+  "minutes": "мин.",
+  "seconds": "сек.",
+  "get_chance": "Текущие игры",
+  "completed_chances": "Завершенные игры",
+  "settings": "Настройки",
+  "search": "Поиск",
+  "cur_games" : "Текущие игры",
+  "through" : "через",
+  "now" : "сейчас:"
+}
