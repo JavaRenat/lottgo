@@ -7,7 +7,7 @@ import CurrentGames from "./pages/CurrentGames/CurrentGames";
 import History from "./pages/History/History";
 import Series from "./pages/Series/Series";
 import {useEffect, useState} from "react";
-import "./i18n"; // Подключаем i18n
+import i18n from "./i18n"; // Подключаем i18n
 import axios from "axios";
 import BackendConfig from "./config/config";
 
@@ -107,6 +107,16 @@ export default function App() {
 
         sendUserData();
     }, [tgUser, location]); // Запускать только когда загружены `tgUser` и `location`
+
+    useEffect(() => {
+        if (tgUser?.language_code) {
+            const supportedLanguages = Object.keys(i18n.options.resources);
+            const userLang = supportedLanguages.includes(tgUser.language_code)
+                ? tgUser.language_code
+                : "en";
+            i18n.changeLanguage(userLang);
+        }
+    }, [tgUser]);
 
     return (
         <>

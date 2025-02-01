@@ -8,7 +8,7 @@ import ru from "./locales/ru.json";
 
 i18n
     .use(initReactI18next)
-    .use(LanguageDetector) // Определяет язык браузера
+    // .use(LanguageDetector) // Определяет язык браузера
     .init({
         resources: {
             en: { translation: en },
