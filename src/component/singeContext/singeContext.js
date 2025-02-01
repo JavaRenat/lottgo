@@ -1,10 +1,9 @@
 import {Badge, Button} from "@material-ui/core";
-import {img_300, unavailable} from "../../config/config";
+import {unavailable} from "../../config/config";
 import ContentModal from "../../contentModal/ContentModal";
 import "./singe.scss";
-import { useEffect, useState } from "react";
-import { CircularProgress } from "@mui/material";
-import { useTranslation } from "react-i18next";
+import {useEffect, useState} from "react";
+import {useTranslation} from "react-i18next";
 
 export default function SingeContext({content}) {
     const { t } = useTranslation();

@@ -1,9 +1,7 @@
 import axios from "axios";
 import {useEffect, useState} from "react";
-import Genres from "../../component/Genres";
 import CustomPagination from "../../component/pagination/CustomPagination";
 import SingeContext from "../../component/singeContext/singeContext";
-import {useGenres} from "../../hooks/useGenres";
 import BackendConfig from "../../config/config";
 import {useTranslation} from "react-i18next";
 

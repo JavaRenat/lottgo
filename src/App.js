@@ -5,7 +5,7 @@ import {Container} from "@material-ui/core";
 import {Route, Routes} from "react-router-dom";
 import CurrentGames from "./pages/CurrentGames/CurrentGames";
 import History from "./pages/History/History";
-import Series from "./pages/Series/Series";
+import Settings from "./pages/Settings/Settings";
 import {useEffect, useState} from "react";
 import i18n from "./i18n"; // Подключаем i18n
 import axios from "axios";
@@ -126,7 +126,7 @@ export default function App() {
                     <Routes>
                         <Route path="/" element={<CurrentGames/>}/>
                         <Route path="/history" element={<History/>}/>
-                        <Route path="/settings" element={<Series/>}/>
+                        <Route path="/settings" element={<Settings/>}/>
                     </Routes>
                 </Container>
             </div>

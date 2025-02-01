@@ -31,5 +31,6 @@
     "The winner is selected using the following formula:\n- The number formed from the Bitcoin rate (118248) is taken.\n- This number is divided by N, and the remainder of the division is used.\n- The participant whose number matches the remainder is the winner.\n\nWhat does \"remainder of division\" (modulus) mean?\nWhen a number is divided by N, we do not take the quotient but only the remaining value that does not divide evenly. This is called the remainder (modulo N). The remainder is always in the range from 0 to N-1.",
     "\nExample of winner calculation:\n- Suppose there are 17 participants (N = 17).\n- The number obtained from the Bitcoin rate at the predefined moment: 118248.\n- Calculation: 118248 % 17 = 10 (remainder of division).\n- The winner is participant #10 (numbering starts from 0, meaning the 11th player in the list wins).\n\nAfter each game ends, all calculations will be presented, including the recorded number, the total number of participants, and the determined winner. This ensures transparency and fairness of the process."
   ],
-  "Close": "Close"
+  "Close": "Close",
+  "Settings": "Settings"
 }

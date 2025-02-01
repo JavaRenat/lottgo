@@ -1,8 +1,4 @@
-import {
-  createTheme,
-  makeStyles,
-  ThemeProvider
-} from "@material-ui/core/styles";
+import {createTheme, ThemeProvider} from "@material-ui/core/styles";
 import Pagination from "@material-ui/lab/Pagination";
 
 const darkTheme = createTheme({

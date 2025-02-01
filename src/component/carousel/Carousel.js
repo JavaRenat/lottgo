@@ -1,8 +1,7 @@
-import axios from "axios";
-import React, { useEffect, useState } from "react";
+import React, {useState} from "react";
 import AliceCarousel from "react-alice-carousel";
 import "react-alice-carousel/lib/alice-carousel.css";
-import { img_300 } from "../../config/config";
+import {img_300} from "../../config/config";
 import "./carousel.css";
 
 const handleDragStart = (e) => e.preventDefault();

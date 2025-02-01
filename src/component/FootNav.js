@@ -2,12 +2,11 @@ import React, {useEffect} from "react";
 import {makeStyles} from "@material-ui/core/styles";
 import BottomNavigation from "@material-ui/core/BottomNavigation";
 import BottomNavigationAction from "@material-ui/core/BottomNavigationAction";
-import CheckCircleIcon from '@mui/icons-material/CheckCircle';
 import FavoriteIcon from '@mui/icons-material/Favorite';
 import SettingsIcon from '@mui/icons-material/Settings';
 import {useNavigate} from "react-router-dom";
 import SvgIcon from '@mui/material/SvgIcon';
-import { useTranslation } from "react-i18next";
+import {useTranslation} from "react-i18next";
 
 const useStyles = makeStyles({
   root: {
