@@ -120,7 +120,7 @@ export default function App() {
 
     return (
         <>
-            <Header/>
+            <Header userData={userData}/>
             <div className="app">
                 <Container>
                     <Routes>

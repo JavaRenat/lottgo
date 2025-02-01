@@ -17,7 +17,7 @@ export default function CurrentGames() {
         const fetchTrending = async () => {
             let data;
             if (BackendConfig.useMockData) {
-                const response = await fetch(`${process.env.PUBLIC_URL}/mock/trending.json`);
+                const response = await fetch(`${process.env.PUBLIC_URL}/mock/currentgames.json`);
                 data = await response.json();
             } else {
                 const response = await axios.get(

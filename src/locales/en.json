@@ -6,11 +6,11 @@
   "bitcoin_at": "₿ At",
   "play": "Play",
   "expired": "Expired",
-  "months": "months",
-  "weeks": "weeks",
-  "days": "days",
-  "hours": "hours",
-  "minutes": "minutes",
+  "months": "month.",
+  "weeks": "week.",
+  "days": "day.",
+  "hours": "hour.",
+  "minutes": "min.",
   "seconds": "seconds",
   "get_chance": "Current games",
   "completed_chances": "Completed games",
@@ -18,5 +18,17 @@
   "search": "Search",
   "cur_games" : "Current games",
   "through" : "in",
-  "now" : "now:"
+  "now" : "now:",
+  "balance" : "Balance",
+  "Win Info": "How is the winner determined?",
+  "Win Explanation": [
+    "The winner is determined based on a predefined game end time. At this exact moment, the Bitcoin exchange rate is recorded and used to select the winner.",
+    "1. The number of participants (N) is fixed before the game ends and does not change.",
+    "2. The exact time when the Bitcoin exchange rate will be taken is known in advance, accurate to one second.",
+    "3. At this moment, the Bitcoin exchange rate is recorded.",
+    "4. A 6-digit number is formed from the Bitcoin rate, consisting of:\n- The first 4 digits before the decimal point,\n- The first 2 digits after the decimal point.\n\nExample:\nLet's say the game is set to end on March 15, 2026, at 14:30:00 UTC.\nAt this moment, the Bitcoin rate is 101182.48.\nThe number obtained from the Bitcoin rate at the predefined moment in time: 118248.",
+    "The winner is selected using the following formula:\n- The number formed from the Bitcoin rate (118248) is taken.\n- This number is divided by N, and the remainder of the division is used.\n- The participant whose number matches the remainder is the winner.\n\nWhat does \"remainder of division\" (modulus) mean?\nWhen a number is divided by N, we do not take the quotient but only the remaining value that does not divide evenly. This is called the remainder (modulo N). The remainder is always in the range from 0 to N-1.",
+    "\nExample of winner calculation:\n- Suppose there are 17 participants (N = 17).\n- The number obtained from the Bitcoin rate at the predefined moment: 118248.\n- Calculation: 118248 % 17 = 10 (remainder of division).\n- The winner is participant #10 (numbering starts from 0, meaning the 11th player in the list wins).\n\nAfter each game ends, all calculations will be presented, including the recorded number, the total number of participants, and the determined winner. This ensures transparency and fairness of the process."
+  ],
+  "Close": "Close"
 }
