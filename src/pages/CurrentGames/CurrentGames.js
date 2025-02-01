@@ -40,7 +40,9 @@ export default function CurrentGames() {
                     <SingeContext key={c.id} content={c}/>
                 ))}
             </div>
-            <CustomPagination setPage={setPage} numOfPage={numOfPages}/>
+            {numOfPages > 1 && (
+                <CustomPagination setPage={setPage} numOfPage={numOfPages} />
+            )}
         </div>
     );
 }

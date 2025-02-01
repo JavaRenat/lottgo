@@ -22,6 +22,7 @@ const BackendConfig = {
 };
 
 BackendConfig.currentGamesEndpoint = `${BackendConfig.backEndApi}/${BackendConfig.apiVersion}/currentGames`;
+BackendConfig.finishedGamesEndpoint = `${BackendConfig.backEndApi}/${BackendConfig.apiVersion}/finishedGames`;
 BackendConfig.getLocationEndpoint = `${BackendConfig.backEndApi}/${BackendConfig.apiVersion}/getLocation`;
 BackendConfig.userEndpoint = `${BackendConfig.backEndApi}/${BackendConfig.apiVersion}/user`;
 
