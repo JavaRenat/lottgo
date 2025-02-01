@@ -4,9 +4,7 @@ import SingeContext from "../../component/singeContext/singeContext";
 import CustomPagination from "../../component/pagination/CustomPagination";
 import "./CurrentGames.scss";
 import {useTranslation} from "react-i18next";
-
-const useMockData = true; // Переключатель между API и моковыми данными
-
+import BackendConfig from "../../config/config";
 
 export default function CurrentGames() {
     const { t } = useTranslation();
@@ -18,12 +16,12 @@ export default function CurrentGames() {
         window.scroll(0, 0);
         const fetchTrending = async () => {
             let data;
-            if (useMockData) {
+            if (BackendConfig.useMockData) {
                 const response = await fetch(`${process.env.PUBLIC_URL}/mock/trending.json`);
                 data = await response.json();
             } else {
                 const response = await axios.get(
-                    `https://Evgenij_lezhnin_s_API/v1/chances?api_key=${process.env.REACT_APP_API_KEY}&page=${page}`
+                    `${BackendConfig.currentGamesEndpoint}?api_key=${process.env.REACT_APP_API_KEY}&page=${page}`
                 );
                 data = response.data;
             }

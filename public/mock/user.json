@@ -1,0 +1,13 @@
+{
+  "telegramId": 12345678,
+  "firstName": "Иван",
+  "lastName": "Иванов",
+  "username": "ivanivanov",
+  "language": "ru",
+  "ip": "192.168.1.1",
+  "country": "Россия",
+  "city": "Москва",
+  "lat": 55.7558,
+  "lon": 37.6173,
+  "balance": 150.75
+}

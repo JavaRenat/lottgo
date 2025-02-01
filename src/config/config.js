@@ -12,3 +12,17 @@ export const unavailableLandscape =
 // For Carousel
 export const noPicture =
   "https://upload.wikimedia.org/wikipedia/en/6/60/No_Picture.jpg";
+
+
+
+const BackendConfig = {
+    useMockData: true,  // Переключение между моковыми данными и API
+    backEndApi: "https://backend-api.com",
+    apiVersion: "v1",
+};
+
+BackendConfig.currentGamesEndpoint = `${BackendConfig.backEndApi}/${BackendConfig.apiVersion}/currentGames`;
+BackendConfig.getLocationEndpoint = `${BackendConfig.backEndApi}/${BackendConfig.apiVersion}/getLocation`;
+BackendConfig.userEndpoint = `${BackendConfig.backEndApi}/${BackendConfig.apiVersion}/user`;
+
+export default BackendConfig;
