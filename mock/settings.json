@@ -1,6 +1,6 @@
 {
-  "city": "Москва",
+  "city": 1,
   "ageRange": "26-35",
   "drawTime": "weeks",
-  "services": ["Свидание", "Встреча на 1 день"]
+  "services": [1, 2]
 }
