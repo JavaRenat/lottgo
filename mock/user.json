@@ -10,6 +10,7 @@
   "lat": 55.7558,
   "lon": 37.6173,
   "balance": 10.75,
+  "role" : "ADMIN",
   "games_count" : {
     "1241982" : 2
   }
