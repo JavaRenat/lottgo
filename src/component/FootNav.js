@@ -7,6 +7,8 @@ import SettingsIcon from '@mui/icons-material/Settings';
 import {useNavigate} from "react-router-dom";
 import SvgIcon from '@mui/material/SvgIcon';
 import {useTranslation} from "react-i18next";
+import LocalActivityIcon from "@material-ui/icons/LocalActivity";
+import SecurityIcon from "@material-ui/icons/Security";
 
 const useStyles = makeStyles({
   root: {
@@ -26,7 +28,7 @@ function SpadeIcon(props) {
   );
 }
 
-export default function SimpleBottomNavigation() {
+export default function SimpleBottomNavigation({userData}) {
   const { t } = useTranslation();
   const classes = useStyles();
   const [value, setValue] = React.useState(0);
@@ -35,8 +37,9 @@ export default function SimpleBottomNavigation() {
     if (value === 0) return navi("/");
     else if (value === 1) return navi("/history");
     else if (value === 2) return navi("/settings");
-    // else if (value === 3) return navi("/search");
-  }, [value, navi]);
+    else if (value === 3) return navi("/promotion");
+    else if (value === 4 && userData.role === "ADMIN") return navi("/admin");
+  }, [value, navi, userData]);
   return (
     <BottomNavigation
       value={value}
@@ -61,6 +64,19 @@ export default function SimpleBottomNavigation() {
           label={t("settings")}
           icon={<SettingsIcon />}
       />
+      <BottomNavigationAction
+          style={{ color: "orange" }}
+          label={t("promotion")}
+          icon={<LocalActivityIcon />}
+      />
+
+      {userData?.role === "ADMIN" && (
+          <BottomNavigationAction
+              style={{ color: "gold" }}
+              label={t("admin_panel")}
+              icon={<SecurityIcon />}
+          />
+      )}
     </BottomNavigation>
   );
 }

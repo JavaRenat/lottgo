@@ -127,10 +127,12 @@ export default function App() {
                         <Route path="/" element={<CurrentGames userData={userData} setUserData={setUserData}/>}/>
                         <Route path="/history" element={<History userData={userData}/>}/>
                         <Route path="/settings" element={<Settings userData={userData}/>}/>
+                        <Route path="/promotion" element={<Settings userData={userData}/>}/>
+                        <Route path="/admin" element={<Settings userData={userData}/>}/>
                     </Routes>
                 </Container>
             </div>
-            <FootNav/>
+            <FootNav userData={userData}/>
         </>
     );
 }

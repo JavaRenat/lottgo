@@ -66,5 +66,7 @@
   "no": "No",
   "purchase_error": "Error purchasing ticket",
   "network_error": "Network error",
-  "insufficient_funds": "Insufficient funds"
+  "insufficient_funds": "Insufficient funds",
+  "promotion": "Promotion: Become a model for free!",
+  "admin_panel": "Admin Panel"
 }

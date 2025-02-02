@@ -66,5 +66,7 @@
   "no": "Нет",
   "insufficient_funds": "Недостаточно средств на балансе",
   "purchase_error": "Ошибка при покупке билета",
-  "network_error": "Ошибка сети"
+  "network_error": "Ошибка сети",
+  "promotion": "Акция: стань моделью бесплатно!",
+  "admin_panel": "Админка"
 }
