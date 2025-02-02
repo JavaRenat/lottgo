@@ -32,5 +32,23 @@
     "\nExample of winner calculation:\n- Suppose there are 17 participants (N = 17).\n- The number obtained from the Bitcoin rate at the predefined moment: 118248.\n- Calculation: 118248 % 17 = 10 (remainder of division).\n- The winner is participant #10 (numbering starts from 0, meaning the 11th player in the list wins).\n\nAfter each game ends, all calculations will be presented, including the recorded number, the total number of participants, and the determined winner. This ensures transparency and fairness of the process."
   ],
   "Close": "Close",
-  "Settings": "Settings"
+  "Settings": "Settings",
+  "City": "City",
+  "Select a city": "Select a city",
+  "Age Range": "Age Range",
+  "Any Age": "Any Age",
+  "Draw Time": "Draw Time",
+  "All Draws": "All Draws",
+  "Next Few Hours": "Next Few Hours",
+  "Next Few Days": "Next Few Days",
+  "Next Few Weeks": "Next Few Weeks",
+  "Next Few Months": "Next Few Months",
+  "Services": "Services",
+  "Date": "Date",
+  "Meeting for 1 hour": "Meeting for 1 hour",
+  "Meeting for 1 day": "Meeting for 1 day",
+  "Dinner": "Dinner",
+  "Walk": "Walk",
+  "Save Settings": "Save Settings",
+  "Loading settings...": "Loading settings..."
 }

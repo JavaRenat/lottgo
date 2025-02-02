@@ -25,5 +25,6 @@ BackendConfig.currentGamesEndpoint = `${BackendConfig.backEndApi}/${BackendConfi
 BackendConfig.finishedGamesEndpoint = `${BackendConfig.backEndApi}/${BackendConfig.apiVersion}/finishedGames`;
 BackendConfig.getLocationEndpoint = `${BackendConfig.backEndApi}/${BackendConfig.apiVersion}/getLocation`;
 BackendConfig.userEndpoint = `${BackendConfig.backEndApi}/${BackendConfig.apiVersion}/user`;
+BackendConfig.settingsEndpoint = `${BackendConfig.backEndApi}/${BackendConfig.apiVersion}/settings`;
 
 export default BackendConfig;

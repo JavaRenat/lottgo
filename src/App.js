@@ -126,7 +126,7 @@ export default function App() {
                     <Routes>
                         <Route path="/" element={<CurrentGames/>}/>
                         <Route path="/history" element={<History/>}/>
-                        <Route path="/settings" element={<Settings/>}/>
+                        <Route path="/settings" element={<Settings userData={userData}/>}/>
                     </Routes>
                 </Container>
             </div>
