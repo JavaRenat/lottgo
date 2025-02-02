@@ -6,6 +6,8 @@ import "./settings.scss"; // <-- Подключаем SCSS
 
 export default function Settings({ userData }) {
     const { t } = useTranslation();
+    const [cities, setCities] = useState({});
+    const [services, setServices] = useState({});
     const [settings, setSettings] = useState(null);
     const [selectedCity, setSelectedCity] = useState("");
     const [ageRange, setAgeRange] = useState("any");
@@ -13,35 +15,54 @@ export default function Settings({ userData }) {
     const [selectedServices, setSelectedServices] = useState([]);
 
     useEffect(() => {
-        if (!userData || !userData.telegramId) return;
-
-        const fetchSettings = async () => {
+        const fetchData = async () => {
             try {
-                let data;
+                let citiesData, servicesData, settingsData;
+
                 if (BackendConfig.useMockData) {
-                    const response = await fetch(`${process.env.PUBLIC_URL}/mock/settings.json`);
-                    data = await response.json();
+                    const citiesResponse = await fetch(`${process.env.PUBLIC_URL}/mock/cities.json`);
+                    citiesData = await citiesResponse.json();
+
+                    const servicesResponse = await fetch(`${process.env.PUBLIC_URL}/mock/services.json`);
+                    servicesData = await servicesResponse.json();
                 } else {
-                    const response = await axios.get(`${BackendConfig.settingsEndpoint}?id=${userData.telegramId}`);
-                    data = response.data;
+                    const citiesResponse = await axios.get(`${BackendConfig.citiesEndpoint}`);
+                    citiesData = citiesResponse.data;
+
+                    const servicesResponse = await axios.get(`${BackendConfig.servicesEndpoint}`);
+                    servicesData = servicesResponse.data;
                 }
 
-                setSettings(data);
-                setSelectedCity(data.city || "");
-                setAgeRange(data.ageRange || "any");
-                setDrawTime(data.drawTime || "all");
-                setSelectedServices(data.services || []);
+                setCities(citiesData);
+                setServices(servicesData);
+
+                if (!userData || !userData.telegramId) return;
+
+                if (BackendConfig.useMockData) {
+                    const settingsResponse = await fetch(`${process.env.PUBLIC_URL}/mock/settings.json`);
+                    settingsData = await settingsResponse.json();
+                } else {
+                    const settingsResponse = await axios.get(`${BackendConfig.settingsEndpoint}?id=${userData.telegramId}`);
+                    settingsData = settingsResponse.data;
+                }
+
+                setSettings(settingsData);
+                setSelectedCity(settingsData.city || "");
+                setAgeRange(settingsData.ageRange || "any");
+                setDrawTime(settingsData.drawTime || "all");
+                setSelectedServices(settingsData.services || []);
+
             } catch (error) {
-                console.error("Ошибка загрузки настроек:", error);
+                console.error("Ошибка загрузки данных:", error);
             }
         };
 
-        fetchSettings();
+        fetchData();
     }, [userData]);
 
-    const handleServiceChange = (service) => {
+    const handleServiceChange = (serviceId) => {
         setSelectedServices((prev) =>
-            prev.includes(service) ? prev.filter((s) => s !== service) : [...prev, service]
+            prev.includes(serviceId) ? prev.filter((id) => id !== serviceId) : [...prev, serviceId]
         );
     };
 
@@ -60,7 +81,7 @@ export default function Settings({ userData }) {
         }
     };
 
-    if (!settings) return <p className="text-center text-gray-500">{t("Loading settings...")}</p>;
+    if (!settings || !cities || !services) return <p className="text-center text-gray-500">{t("Loading settings...")}</p>;
 
     return (
         <div className="settings-container">
@@ -70,11 +91,9 @@ export default function Settings({ userData }) {
                 <label>{t("City")}</label>
                 <select value={selectedCity} onChange={(e) => setSelectedCity(e.target.value)}>
                     <option value="">{t("Select a city")}</option>
-                    <option value="Москва">Москва</option>
-                    <option value="Санкт-Петербург">Санкт-Петербург</option>
-                    <option value="Казань">Казань</option>
-                    <option value="Новосибирск">Новосибирск</option>
-                    <option value="Екатеринбург">Екатеринбург</option>
+                    {Object.entries(cities).map(([id, cityKey]) => (
+                        <option key={id} value={id}>{t(cityKey)}</option>
+                    ))}
                 </select>
             </div>
 
@@ -103,14 +122,14 @@ export default function Settings({ userData }) {
             <div className="settings-block">
                 <label>{t("Services")}</label>
                 <div className="settings-checkbox-group">
-                    {["Свидание", "Встреча на 1 час", "Встреча на 1 день", "Ужин", "Прогулка"].map((service) => (
-                        <label key={service} className="settings-checkbox">
+                    {Object.entries(services).map(([id, serviceKey]) => (
+                        <label key={id} className="settings-checkbox">
                             <input
                                 type="checkbox"
-                                checked={selectedServices.includes(service)}
-                                onChange={() => handleServiceChange(service)}
+                                checked={selectedServices.includes(parseInt(id))}
+                                onChange={() => handleServiceChange(parseInt(id))}
                             />
-                            {t(service)}
+                            {t(serviceKey)}
                         </label>
                     ))}
                 </div>
