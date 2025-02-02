@@ -6,7 +6,7 @@ import "./CurrentGames.scss";
 import {useTranslation} from "react-i18next";
 import BackendConfig from "../../config/config";
 
-export default function CurrentGames() {
+export default function CurrentGames({userData, setUserData}) {
     const { t } = useTranslation();
     const [page, setPage] = useState(1);
     const [content, setContent] = useState([]);
@@ -37,7 +37,7 @@ export default function CurrentGames() {
             <span className="pageTitle">{t("cur_games")}</span>
             <div className="trending">
                 {content.map((c) => (
-                    <SingeContext key={c.id} content={c}/>
+                    <SingeContext key={c.id} content={c} userData={userData} setUserData={setUserData}/>
                 ))}
             </div>
             {numOfPages > 1 && (

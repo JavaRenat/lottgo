@@ -124,8 +124,8 @@ export default function App() {
             <div className="app">
                 <Container>
                     <Routes>
-                        <Route path="/" element={<CurrentGames/>}/>
-                        <Route path="/history" element={<History/>}/>
+                        <Route path="/" element={<CurrentGames userData={userData} setUserData={setUserData}/>}/>
+                        <Route path="/history" element={<History userData={userData}/>}/>
                         <Route path="/settings" element={<Settings userData={userData}/>}/>
                     </Routes>
                 </Container>

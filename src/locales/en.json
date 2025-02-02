@@ -57,5 +57,14 @@
   "Any Age": "Any age",
   "Draw Time": "Consider draws:",
   "All Draws": "All draws",
-  "Save Settings": "Save settings"
+  "Save Settings": "Save settings",
+  "existing_tickets": "You already have",
+  "want_more_tickets": "tickets. Do you want to buy more?",
+  "confirm_purchase": "Are you sure you want to buy a ticket?",
+  "purchase_confirmation": "Purchase Confirmation",
+  "yes": "Yes",
+  "no": "No",
+  "purchase_error": "Error purchasing ticket",
+  "network_error": "Network error",
+  "insufficient_funds": "Insufficient funds"
 }

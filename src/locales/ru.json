@@ -57,5 +57,14 @@
   "Any Age": "Любой возраст",
   "Draw Time": "Учитывать розыгрыши:",
   "All Draws": "Все розыгрыши",
-  "Save Settings": "Сохранить настройки"
+  "Save Settings": "Сохранить настройки",
+  "existing_tickets": "У вас уже есть",
+  "want_more_tickets": "билетов. Вы хотите купить еще?",
+  "confirm_purchase": "Вы действительно хотите купить билет?",
+  "purchase_confirmation": "Подтверждение покупки",
+  "yes": "Да",
+  "no": "Нет",
+  "insufficient_funds": "Недостаточно средств на балансе",
+  "purchase_error": "Ошибка при покупке билета",
+  "network_error": "Ошибка сети"
 }

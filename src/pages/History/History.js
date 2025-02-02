@@ -5,7 +5,7 @@ import SingeContext from "../../component/singeContext/singeContext";
 import BackendConfig from "../../config/config";
 import {useTranslation} from "react-i18next";
 
-export default function History() {
+export default function History({userData}) {
     const {t} = useTranslation();
     const [content, setContent] = useState([]);
     const [page, setPage] = useState(1);
@@ -36,7 +36,7 @@ export default function History() {
             <span className="pageTitle">{t("history_games")}</span>
             <div className="trending">
                 {content.map((c) => (
-                    <SingeContext key={c.id} content={c}/>
+                    <SingeContext key={c.id} content={c} userData={userData}/>
                 ))}
             </div>
             {numOfPage > 1 && (
