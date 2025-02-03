@@ -9,6 +9,8 @@ export default function AdminPanel({ userData }) {
     const [applications, setApplications] = useState([]);
     const [error, setError] = useState("");
     const [selectedApplication, setSelectedApplication] = useState(null);
+    // Новое состояние для полноэкранного показа фото
+    const [fullScreenPhoto, setFullScreenPhoto] = useState(null);
 
     useEffect(() => {
         async function fetchApplications() {
@@ -84,37 +86,78 @@ export default function AdminPanel({ userData }) {
                     <tr key={app.id}>
                         <td>{app.name}</td>
                         <td>
-                            <button className="view-button" onClick={() => setSelectedApplication(app)}>{t("view")}</button>
-                            <button className="approve-button" onClick={() => approveApplication(app.id)}>{t("approve")}</button>
-                            <button className="delete-button" onClick={() => deleteApplication(app.id)}>{t("delete")}</button>
+                            <button className="view-button" onClick={() => setSelectedApplication(app)}>
+                                {t("view")}
+                            </button>
+                            <button className="approve-button" onClick={() => approveApplication(app.id)}>
+                                {t("approve")}
+                            </button>
+                            <button className="delete-button" onClick={() => deleteApplication(app.id)}>
+                                {t("delete")}
+                            </button>
                         </td>
                     </tr>
                 ))}
                 </tbody>
             </table>
 
+            {/* Модальное окно с деталями заявки */}
             {selectedApplication && (
                 <div className="modal-overlay" onClick={() => setSelectedApplication(null)}>
-                    <div className="modal" onClick={(e) => e.stopPropagation()} style={{ background: "#fff", padding: "20px", borderRadius: "10px" }}>
+                    <div className="modal" onClick={(e) => e.stopPropagation()}>
                         <h2>{selectedApplication.name}</h2>
-                        <p><strong>{t("height")}:</strong> {selectedApplication.height} cm</p>
-                        <p><strong>{t("weight")}:</strong> {selectedApplication.weight} kg</p>
-                        <p><strong>{t("city")}:</strong> {selectedApplication.city}</p>
-                        <p><strong>{t("bustSize")}:</strong> {selectedApplication.bustSize}</p>
-                        <p><strong>{t("phoneNumber")}:</strong> {selectedApplication.phoneNumber}</p>
-                        <p><strong>{t("description")}:</strong> {selectedApplication.description}</p>
-                        <p><strong>{t("created_at")}:</strong> {new Date(selectedApplication.created_at).toLocaleString()}</p>
+                        <p>
+                            <strong>{t("height")}:</strong> {selectedApplication.height} cm
+                        </p>
+                        <p>
+                            <strong>{t("weight")}:</strong> {selectedApplication.weight} kg
+                        </p>
+                        <p>
+                            <strong>{t("city")}:</strong> {selectedApplication.city}
+                        </p>
+                        <p>
+                            <strong>{t("bustSize")}:</strong> {selectedApplication.bustSize}
+                        </p>
+                        <p>
+                            <strong>{t("phoneNumber")}:</strong> {selectedApplication.phoneNumber}
+                        </p>
+                        <p>
+                            <strong>{t("description")}:</strong> {selectedApplication.description}
+                        </p>
+                        <p>
+                            <strong>{t("created_at")}:</strong>{" "}
+                            {new Date(selectedApplication.created_at).toLocaleString()}
+                        </p>
                         <div className="photo-gallery">
-                            {selectedApplication.photos.map((photo, index) => (
-                                <img
-                                    key={index}
-                                    src={`${process.env.PUBLIC_URL}/photos/${selectedApplication.telegramId}_${selectedApplication.id}/${photo}`}
-                                    alt={photo}
-                                    className="modal-photo"
-                                />
-                            ))}
+                            {selectedApplication.photos.map((photo, index) => {
+                                // Формирование пути к фото
+                                const photoSrc = `${process.env.PUBLIC_URL}/photos/${selectedApplication.telegramId}_${selectedApplication.id}/${photo}`;
+                                return (
+                                    <img
+                                        key={index}
+                                        src={photoSrc}
+                                        alt={photo}
+                                        className="modal-photo"
+                                        onClick={() => setFullScreenPhoto(photoSrc)}
+                                    />
+                                );
+                            })}
                         </div>
-                        <button className="close-button" onClick={() => setSelectedApplication(null)}>Закрыть</button>
+                        <button className="close-button" onClick={() => setSelectedApplication(null)}>
+                            Закрыть
+                        </button>
+                    </div>
+                </div>
+            )}
+
+            {/* Модальное окно для полноэкранного просмотра фото */}
+            {fullScreenPhoto && (
+                <div className="fullscreen-photo-overlay" onClick={() => setFullScreenPhoto(null)}>
+                    <div className="fullscreen-photo-container" onClick={(e) => e.stopPropagation()}>
+                        <img src={fullScreenPhoto} alt="Full Screen" className="fullscreen-photo" />
+                        <button className="close-fullscreen-button" onClick={() => setFullScreenPhoto(null)}>
+                            Закрыть
+                        </button>
                     </div>
                 </div>
             )}
