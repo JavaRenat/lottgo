@@ -10,6 +10,7 @@ import {useEffect, useState} from "react";
 import i18n from "./i18n"; // Подключаем i18n
 import axios from "axios";
 import BackendConfig from "./config/config";
+import MakeModel from "./pages/MakeModel/MakeModel";
 
 
 export default function App() {
@@ -127,7 +128,7 @@ export default function App() {
                         <Route path="/" element={<CurrentGames userData={userData} setUserData={setUserData}/>}/>
                         <Route path="/history" element={<History userData={userData}/>}/>
                         <Route path="/settings" element={<Settings userData={userData}/>}/>
-                        <Route path="/promotion" element={<Settings userData={userData}/>}/>
+                        <Route path="/promotion" element={<MakeModel userData={userData} setUserData={setUserData}/>}/>
                         <Route path="/admin" element={<Settings userData={userData}/>}/>
                     </Routes>
                 </Container>

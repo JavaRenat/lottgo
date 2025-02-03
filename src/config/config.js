@@ -23,5 +23,6 @@ BackendConfig.settingsEndpoint = `${BackendConfig.backEndApi}/${BackendConfig.ap
 BackendConfig.citiesEndpoint = `${BackendConfig.backEndApi}/${BackendConfig.apiVersion}/cities`;
 BackendConfig.servicesEndpoint = `${BackendConfig.backEndApi}/${BackendConfig.apiVersion}/services`;
 BackendConfig.playEndpoint = `${BackendConfig.backEndApi}/${BackendConfig.apiVersion}/play`; // списание баланса и счетчик игр должен быть увеличен, учесть что денег может не хватать, проверять что игра актуальна (по дате) и сейчас в игре
+BackendConfig.modelEndpoint = `${BackendConfig.backEndApi}/${BackendConfig.apiVersion}/model`; // добавляет новую карту, проверяет лимиты пользователя
 
 export default BackendConfig;

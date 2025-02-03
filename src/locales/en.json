@@ -68,5 +68,18 @@
   "network_error": "Network error",
   "insufficient_funds": "Insufficient funds",
   "promotion": "Promotion: Become a model for free!",
-  "admin_panel": "Admin Panel"
+  "admin_panel": "Admin Panel",
+  "promotion_message": "A promotion is currently running! Become a model for free and earn money from raffles. Submit your application using this form:",
+  "name": "Name",
+  "height": "Height",
+  "bust_size": "Bust Size",
+  "phone_number": "Phone number that has TG or WhatsApp",
+  "choose_services": "Choose what you agree to raffle",
+  "submit": "Submit Application",
+  "card_limit_reached": "You have reached the card limit",
+  "fill_all_fields": "Please fill in all fields",
+  "submission_failed": "Submission failed",
+  "loading_services": "Loading services...",
+  "upload_photos" : "You must upload at least 3 photos",
+  "fill_all_fields_min_photos": "Please fill in all fields and upload at least 3 photos."
 }
