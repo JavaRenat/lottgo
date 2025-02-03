@@ -10,13 +10,15 @@ export default function MakeModel({ userData, setUserData }) {
         name: "",
         height: "",
         weight: "",
-        bustSize: "",
+        bustSize: "A",
         phoneNumber: "",
+        city: "",
         selectedServices: [],
         photos: []
     });
     const [services, setServices] = useState([]);
     const [error, setError] = useState("");
+    const [success, setSuccess] = useState("");
 
     useEffect(() => {
         async function fetchServices() {
@@ -32,7 +34,7 @@ export default function MakeModel({ userData, setUserData }) {
             } catch (error) {
                 console.error("Ошибка загрузки услуг", error);
             }
-            setServices(Object.values(servicesData));
+            setServices(servicesData);
         }
         fetchServices();
     }, []);
@@ -40,19 +42,25 @@ export default function MakeModel({ userData, setUserData }) {
     const handleChange = (e) => {
         const { name, value } = e.target;
         setFormData(prev => ({ ...prev, [name]: value }));
+        setError("");
+        setSuccess("");
     };
 
-    const handleServiceChange = (service) => {
+    const handleServiceChange = (serviceId) => {
         setFormData(prev => ({
             ...prev,
-            selectedServices: prev.selectedServices.includes(service)
-                ? prev.selectedServices.filter(s => s !== service)
-                : [...prev.selectedServices, service]
+            selectedServices: prev.selectedServices.includes(serviceId)
+                ? prev.selectedServices.filter(id => id !== serviceId)
+                : [...prev.selectedServices, serviceId]
         }));
+        setError("");
+        setSuccess("");
     };
 
     const handleFileChange = (e) => {
         setFormData(prev => ({ ...prev, photos: [...prev.photos, ...Array.from(e.target.files)] }));
+        setError("");
+        setSuccess("");
     };
 
     const removePhoto = (index) => {
@@ -60,16 +68,30 @@ export default function MakeModel({ userData, setUserData }) {
             ...prev,
             photos: prev.photos.filter((_, i) => i !== index)
         }));
+        setError("");
+        setSuccess("");
     };
 
     const handleSubmit = async () => {
+        setError("");
+        setSuccess("");
         if (userData.has_card >= userData.card_limit) {
             setError(t("card_limit_reached"));
             return;
         }
 
-        if (!formData.name || !formData.height || !formData.weight || !formData.bustSize || !formData.phoneNumber || formData.selectedServices.length === 0 || formData.photos.length === 0) {
-            setError(t("fill_all_fields"));
+        if (formData.photos.length < 3) {
+            setError(t("upload_photos"));
+            return;
+        }
+
+        if (formData.selectedServices.length === 0) {
+            setError(t("what_to_raffle"));
+            return;
+        }
+
+        if (!formData.name || !formData.height || !formData.weight || !formData.bustSize || !formData.phoneNumber || !formData.city) {
+            setError(t("fill_all_fields_min_photos"));
             return;
         }
 
@@ -80,12 +102,14 @@ export default function MakeModel({ userData, setUserData }) {
 
         try {
             if (BackendConfig.useMockData) {
-                console.log("Mock submission: ", requestData);
+                console.log("Mock submission: ", requestData, `${BackendConfig.modelEndpoint}`);
                 setUserData(prev => ({ ...prev, has_card: prev.has_card + 1 }));
+                setSuccess(t("submission_success"));
             } else {
                 const response = await axios.post(`${BackendConfig.modelEndpoint}`, requestData);
                 if (response.data.success) {
                     setUserData(prev => ({ ...prev, has_card: prev.has_card + 1 }));
+                    setSuccess(t("submission_success"));
                 } else {
                     setError(t("submission_failed"));
                 }
@@ -112,7 +136,7 @@ export default function MakeModel({ userData, setUserData }) {
             </div>
             <div className="make-model-block">
                 <label>{t("bust_size")} *</label>
-                <select name="bustSize" value={formData.bustSize} onChange={handleChange} required>
+                <select name="bustSize" value={formData.bustSize} onChange={handleChange} required defaultValue="A">
                     {["A", "B", "C", "D", "E"].map(size => (
                         <option key={size} value={size}>{size}</option>
                     ))}
@@ -123,35 +147,26 @@ export default function MakeModel({ userData, setUserData }) {
                 <input name="phoneNumber" value={formData.phoneNumber} onChange={handleChange} required />
             </div>
             <div className="make-model-block">
+                <label>{t("city")} *</label>
+                <input name="city" value={formData.city} onChange={handleChange} required />
+            </div>
+            <div className="make-model-block">
                 <label>{t("choose_services")} *</label>
                 <div className="make-model-checkbox-group">
-                    {services.map(service => (
-                        <label key={service} className="make-model-checkbox">
+                    {Object.entries(services).map(([id, service]) => (
+                        <label key={id} className="make-model-checkbox">
                             <input
                                 type="checkbox"
-                                checked={formData.selectedServices.includes(service)}
-                                onChange={() => handleServiceChange(service)}
+                                checked={formData.selectedServices.includes(id)}
+                                onChange={() => handleServiceChange(id)}
                             />
                             {t(service)}
                         </label>
                     ))}
                 </div>
             </div>
-            <div className="make-model-block">
-                <label>{t("upload_photos")} *</label>
-                <input type="file" multiple accept="image/*" onChange={handleFileChange} required />
-                {formData.photos.length > 0 && (
-                    <div className="photo-preview">
-                        {formData.photos.map((photo, index) => (
-                            <div key={index} className="photo-wrapper">
-                                <img src={URL.createObjectURL(photo)} alt={`preview-${index}`} className="photo-thumbnail" />
-                                <button className="remove-photo" onClick={() => removePhoto(index)}>✖</button>
-                            </div>
-                        ))}
-                    </div>
-                )}
-            </div>
             {error && <p className="error-message">{error}</p>}
+            {success && <p className="success-message">{success}</p>}
             <button className="make-model-button" onClick={handleSubmit}>{t("submit")}</button>
         </div>
     );
