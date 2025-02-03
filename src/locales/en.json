@@ -97,5 +97,7 @@
   "phoneNumber": "Phone Number",
   "description": "Description",
   "created_at": "Created At",
-  "close": "Close"
+  "close": "Close",
+  "edit_application" : "View and edit application",
+  "save" : "Save"
 }
