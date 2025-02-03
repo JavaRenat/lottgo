@@ -3,6 +3,7 @@
   "results": [
     {
       "id": 1241982,
+      "model_id" : 1,
       "title": "Alice 1",
       "overview": "25 year, 180 cm, 60 kg",
       "poster_path": "303017635.0.jpg",
@@ -14,6 +15,7 @@
     },
     {
       "id": 996821,
+      "model_id" : 2,
       "title": "Zemfira 1",
       "overview": "45 year, 160 cm, 50 kg",
       "poster_path": "303017742.0.jpg",
