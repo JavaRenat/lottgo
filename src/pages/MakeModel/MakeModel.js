@@ -10,9 +10,9 @@ export default function MakeModel({ userData, setUserData }) {
         name: "",
         height: "",
         weight: "",
+        city: "",
         bustSize: "A",
         phoneNumber: "",
-        city: "",
         selectedServices: [],
         photos: []
     });
@@ -41,6 +41,11 @@ export default function MakeModel({ userData, setUserData }) {
 
     const handleChange = (e) => {
         const { name, value } = e.target;
+        if (name === "phoneNumber") {
+            if (!/^\+\d*$/.test(value)) {
+                return;
+            }
+        }
         setFormData(prev => ({ ...prev, [name]: value }));
         setError("");
         setSuccess("");
@@ -164,6 +169,20 @@ export default function MakeModel({ userData, setUserData }) {
                         </label>
                     ))}
                 </div>
+            </div>
+            <div className="make-model-block">
+                <label>{t("upload_photos")} *</label>
+                <input type="file" multiple accept="image/*" onChange={handleFileChange} required />
+                {formData.photos.length > 0 && (
+                    <div className="photo-preview">
+                        {formData.photos.map((photo, index) => (
+                            <div key={index} className="photo-wrapper">
+                                <img src={URL.createObjectURL(photo)} alt={`preview-${index}`} className="photo-thumbnail" />
+                                <button className="remove-photo" onClick={() => removePhoto(index)}>✖</button>
+                            </div>
+                        ))}
+                    </div>
+                )}
             </div>
             {error && <p className="error-message">{error}</p>}
             {success && <p className="success-message">{success}</p>}

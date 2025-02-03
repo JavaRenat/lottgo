@@ -85,5 +85,17 @@
   "fill_all_fields_min_photos": "Пожалуйста, заполните все поля.",
   "what_to_raffle" : "Выберите то, что собираетесь разыгрывать",
   "submission_success": "Заявка успешно отправлена на рассмотрение, ответ вы получите прямо в телеграм боте!",
-  "city": "Город"
+  "city": "Город",
+  "actions": "Действия",
+  "view": "Просмотреть",
+  "approve": "Одобрить",
+  "error_loading_applications": "Ошибка загрузки заявок",
+  "error_approving_application": "Ошибка одобрения заявки",
+  "delete" : "Удалить",
+  "error_deleting_application": "Ошибка удаления заявки",
+  "bustSize": "Размер груди",
+  "phoneNumber": "Номер телефона",
+  "description": "Описание",
+  "created_at": "Дата создания",
+  "close": "Закрыть"
 }
