@@ -8,6 +8,7 @@ export default function MakeModel({ userData, setUserData }) {
     const { t } = useTranslation();
     const [formData, setFormData] = useState({
         name: "",
+        age: "", // Добавлено поле возраста
         height: "",
         weight: "",
         city: "",
@@ -116,8 +117,10 @@ export default function MakeModel({ userData, setUserData }) {
             return;
         }
 
+        // Проверяем обязательные поля
         if (
             !formData.name ||
+            !formData.age || // Проверка заполненности возраста
             !formData.height ||
             !formData.weight ||
             !formData.bustSize ||
@@ -132,6 +135,7 @@ export default function MakeModel({ userData, setUserData }) {
         const formDataToSend = new FormData();
         formDataToSend.append("telegramId", userData.telegramId);
         formDataToSend.append("name", formData.name);
+        formDataToSend.append("age", formData.age); // Добавляем возраст
         formDataToSend.append("height", formData.height);
         formDataToSend.append("weight", formData.weight);
         formDataToSend.append("city", formData.city);
@@ -178,6 +182,11 @@ export default function MakeModel({ userData, setUserData }) {
             <div className="make-model-block">
                 <label>{t("name")} *</label>
                 <input name="name" value={formData.name} onChange={handleChange} required />
+            </div>
+            {/* Добавлено поле для ввода возраста */}
+            <div className="make-model-block">
+                <label>{t("age")} *</label>
+                <input name="age" type="number" value={formData.age} onChange={handleChange} required />
             </div>
             <div className="make-model-block">
                 <label>{t("height")} *</label>
