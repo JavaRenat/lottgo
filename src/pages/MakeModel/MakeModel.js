@@ -80,8 +80,26 @@ export default function MakeModel({ userData, setUserData }) {
     const handleSubmit = async () => {
         setError("");
         setSuccess("");
-        if (userData.has_card >= userData.card_limit) {
-            setError(t("card_limit_reached"));
+        try {
+            let limitReached = false;
+
+            if (BackendConfig.useMockData) {
+                const response = await fetch(`${process.env.PUBLIC_URL}/mock/modelLimit.json`);
+                const data = await response.json();
+                limitReached = data.limitReached;
+            } else {
+                const response = await axios.post(`${BackendConfig.checkModelLimitEndpoint}`, {
+                    telegramId: userData.telegramId
+                });
+                limitReached = response.data.limitReached;
+            }
+
+            if (limitReached) {
+                setError(t("card_limit_reached"));
+                return;
+            }
+        } catch (error) {
+            setError(t("submission_failed"));
             return;
         }
 
@@ -108,12 +126,12 @@ export default function MakeModel({ userData, setUserData }) {
         try {
             if (BackendConfig.useMockData) {
                 console.log("Mock submission: ", requestData, `${BackendConfig.modelEndpoint}`);
-                setUserData(prev => ({ ...prev, has_card: prev.has_card + 1 }));
+                setUserData(prev => ({ ...prev, has_model: prev.has_model + 1 }));
                 setSuccess(t("submission_success"));
             } else {
                 const response = await axios.post(`${BackendConfig.modelEndpoint}`, requestData);
                 if (response.data.success) {
-                    setUserData(prev => ({ ...prev, has_card: prev.has_card + 1 }));
+                    setUserData(prev => ({ ...prev, has_model: prev.has_model + 1 }));
                     setSuccess(t("submission_success"));
                 } else {
                     setError(t("submission_failed"));

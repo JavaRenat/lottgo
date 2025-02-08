@@ -17,14 +17,17 @@ const BackendConfig = {
 
 BackendConfig.currentGamesEndpoint = `${BackendConfig.backEndApi}/${BackendConfig.apiVersion}/currentGames`;
 BackendConfig.finishedGamesEndpoint = `${BackendConfig.backEndApi}/${BackendConfig.apiVersion}/finishedGames`;
+BackendConfig.newGamesEndpoint = `${BackendConfig.backEndApi}/${BackendConfig.apiVersion}/newGames`;
 BackendConfig.getLocationEndpoint = `${BackendConfig.backEndApi}/${BackendConfig.apiVersion}/getLocation`;
 BackendConfig.userEndpoint = `${BackendConfig.backEndApi}/${BackendConfig.apiVersion}/user`;
 BackendConfig.settingsEndpoint = `${BackendConfig.backEndApi}/${BackendConfig.apiVersion}/settings`;
 BackendConfig.citiesEndpoint = `${BackendConfig.backEndApi}/${BackendConfig.apiVersion}/cities`;
 BackendConfig.servicesEndpoint = `${BackendConfig.backEndApi}/${BackendConfig.apiVersion}/services`;
 BackendConfig.playEndpoint = `${BackendConfig.backEndApi}/${BackendConfig.apiVersion}/play`; // списание баланса и счетчик игр должен быть увеличен, учесть что денег может не хватать, проверять что игра актуальна (по дате) и сейчас в игре
-BackendConfig.modelEndpoint = `${BackendConfig.backEndApi}/${BackendConfig.apiVersion}/model`; // POST добавляет новую карту, проверяет лимиты пользователя, GET получит модели по критериям UPDATE обновляет существующую
-// BackendConfig.updateModelEndpoint = `${BackendConfig.backEndApi}/${BackendConfig.apiVersion}/updateModel`; // обновляет одну сущность, метод разрешен только для выполнения администратором
-
+BackendConfig.modelEndpoint = `${BackendConfig.backEndApi}/${BackendConfig.apiVersion}/models`; // POST добавляет новую модель, GET получит модели по критериям UPDATE обновляет существующую
+BackendConfig.checkModelLimitEndpoint = `${BackendConfig.backEndApi}/${BackendConfig.apiVersion}/checkModelLimit`; // check if user with id able to create a model
+BackendConfig.approveModelEndpoint = `${BackendConfig.backEndApi}/${BackendConfig.apiVersion}/approveModel` // change status of model with id to status=approved а также создает Game со статусом new
+BackendConfig.deleteModelEndpoint = `${BackendConfig.backEndApi}/${BackendConfig.apiVersion}/deleteModel` // delete model with model id
+BackendConfig.createGameEndpoint = `${BackendConfig.backEndApi}/${BackendConfig.apiVersion}/createGame` // create game with model id
 
 export default BackendConfig;

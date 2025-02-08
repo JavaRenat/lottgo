@@ -99,5 +99,17 @@
   "created_at": "Дата создания",
   "close": "Закрыть",
   "edit_application" : "Просмотр и редактирование заявки",
-  "save" : "Сохранить"
+  "save" : "Сохранить",
+  "participation_price_usd": "Цена участия (USD)",
+  "bitcoin_price_at": "Цена Bitcoin'a",
+  "period": "Период",
+  "create_game": "Создать игру",
+  "new_applications": "Новые заявки",
+  "no_new_applications": "Новых заявок нет",
+  "bitcoin_date_invalid": "Дата должна быть минимум на 1 час позже текущего времени",
+  "week": "Неделя",
+  "month": "Месяц",
+  "hour": "Час",
+  "day": "День",
+  "fill_all_required_fields": "Пожалуйста, заполните все обязательные поля (дата и цена)"
 }

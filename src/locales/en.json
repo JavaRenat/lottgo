@@ -99,5 +99,17 @@
   "created_at": "Created At",
   "close": "Close",
   "edit_application" : "View and edit application",
-  "save" : "Save"
+  "save" : "Save",
+  "participation_price_usd": "Participation Price (USD)",
+  "bitcoin_price_at": "Bitcoin Price At",
+  "period": "Period",
+  "create_game": "Create Game",
+  "new_applications": "New Applications",
+  "no_new_applications": "No new applications",
+  "bitcoin_date_invalid": "The bitcoin price date must be at least 1 hour in the future",
+  "week": "Week",
+  "month": "Month",
+  "hour": "Hour",
+  "day": "Day",
+  "fill_all_required_fields": "Please fill in all required fields (date and price)"
 }

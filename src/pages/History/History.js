@@ -20,7 +20,7 @@ export default function History({userData}) {
                 data = await response.json();
             } else {
                 const response = await axios.get(
-                    `${BackendConfig.currentGamesEndpoint}?api_key=${process.env.REACT_APP_API_KEY}&page=${page}`
+                    `${BackendConfig.finishedGamesEndpoint}?api_key=${process.env.REACT_APP_API_KEY}&page=${page}`
                 );
                 data = response.data;
             }

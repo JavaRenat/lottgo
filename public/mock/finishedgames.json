@@ -3,25 +3,33 @@
   "results": [
     {
       "id": 996821,
+      "telegramId": 12345678,
+      "model_id" : 1,
       "title": "Polina 1",
       "overview": "45 year, 160 cm, 50 kg",
       "poster_path": "303017742.0.jpg",
       "original_language": "en",
       "bitcoin_price_at": "2024-03-21T15:19:11",
       "vote_count": 1,
+      "period" : "week",
       "participant_count": 1123892,
-      "participation_price_usd" : 10
+      "participation_price_usd" : 10,
+      "status" : "finished"
     },
     {
       "id": 1241982,
+      "telegramId": 12345678,
+      "model_id" : 2,
       "title": "Natasha 1",
       "overview": "25 year, 180 cm, 60 kg",
       "poster_path": "303017635.0.jpg",
       "original_language": "en",
       "bitcoin_price_at": "2024-02-02T20:09:11",
       "vote_count": 1039,
+      "period" : "week",
       "participant_count": 1123892,
-      "participation_price_usd" : 1
+      "participation_price_usd" : 1,
+      "status" : "finished"
     }
   ],
   "total_pages": 1,
