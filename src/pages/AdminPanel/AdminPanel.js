@@ -30,7 +30,7 @@ export default function AdminPanel({ userData }) {
                     const response = await fetch(`${process.env.PUBLIC_URL}/mock/models.json`);
                     data = await response.json();
                 } else {
-                    const response = await axios.get(`${BackendConfig.modelEndpoint}?status=created`);
+                    const response = await axios.get(`${BackendConfig.modelEndpoint}?status=created&telegram_id=${userData.telegramId}`);
                     data = response.data;
                 }
                 setApplications(data.cards);
@@ -51,7 +51,7 @@ export default function AdminPanel({ userData }) {
                     const response = await fetch(`${process.env.PUBLIC_URL}/mock/models_new.json`);
                     data = await response.json();
                 } else {
-                    const response = await axios.get(`${BackendConfig.modelEndpoint}?status=new`);
+                    const response = await axios.get(`${BackendConfig.modelEndpoint}?status=new&telegram_id=${userData.telegramId}`);
                     data = response.data;
                 }
                 setNewApplications(data.cards);
@@ -68,7 +68,7 @@ export default function AdminPanel({ userData }) {
                 console.log(`Mock approval for ID: ${id}`);
                 setApplications((prev) => prev.filter((app) => app.id !== id));
             } else {
-                const response = await axios.get(`${BackendConfig.approveModelEndpoint}?id=${id}`);
+                const response = await axios.get(`${BackendConfig.approveModelEndpoint}?id=${id}&telegram_id=${userData.telegramId}`);
                 if (response.status === 200) {
                     setApplications((prev) => prev.filter((app) => app.id !== id));
                 } else {
@@ -87,7 +87,7 @@ export default function AdminPanel({ userData }) {
                 console.log(`Mock deletion for ID: ${id}`);
                 setApplications((prev) => prev.filter((app) => app.id !== id));
             } else {
-                const response = await axios.delete(`${BackendConfig.deleteModelEndpoint}?id=${id}`);
+                const response = await axios.delete(`${BackendConfig.deleteModelEndpoint}?id=${id}&telegram_id=${userData.telegramId}`);
                 if (response.status === 200) {
                     setApplications((prev) => prev.filter((app) => app.id !== id));
                 } else {

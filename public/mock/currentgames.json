@@ -14,7 +14,8 @@
       "period" : "week",
       "participant_count": 1123892,
       "participation_price_usd" : 1,
-      "status" : "running"
+      "status" : "running",
+      "win_info" : "-1"
     },
     {
       "id": 996821,
@@ -29,7 +30,8 @@
       "vote_count": 1,
       "participant_count": 1123892,
       "participation_price_usd" : 10,
-      "status" : "running"
+      "status" : "running",
+      "win_info" : "-1"
     }
   ],
   "total_pages": 1,

@@ -111,5 +111,13 @@
   "month": "Month",
   "hour": "Hour",
   "day": "Day",
-  "fill_all_required_fields": "Please fill in all required fields (date and price)"
+  "fill_all_required_fields": "Please fill in all required fields (date and price)",
+  "prev": "Previous",
+  "next": "Next",
+  "age": "Age",
+  "n/a": "N/A",
+  "cm": "cm",
+  "kg": "kg",
+  "lottery_before_message": "The following activities participate in the draw:",
+  "lottery_after_message": "If you win a ticket, you can use it repeatedly – the number of uses depends on the number of tickets sold."
 }

@@ -13,6 +13,7 @@ export default function MakeModel({ userData, setUserData }) {
         city: "",
         bustSize: "A",
         phoneNumber: "",
+        description: "",
         selectedServices: [],
         photos: []
     });
@@ -46,16 +47,16 @@ export default function MakeModel({ userData, setUserData }) {
                 return;
             }
         }
-        setFormData(prev => ({ ...prev, [name]: value }));
+        setFormData((prev) => ({ ...prev, [name]: value }));
         setError("");
         setSuccess("");
     };
 
     const handleServiceChange = (serviceId) => {
-        setFormData(prev => ({
+        setFormData((prev) => ({
             ...prev,
             selectedServices: prev.selectedServices.includes(serviceId)
-                ? prev.selectedServices.filter(id => id !== serviceId)
+                ? prev.selectedServices.filter((id) => id !== serviceId)
                 : [...prev.selectedServices, serviceId]
         }));
         setError("");
@@ -63,13 +64,13 @@ export default function MakeModel({ userData, setUserData }) {
     };
 
     const handleFileChange = (e) => {
-        setFormData(prev => ({ ...prev, photos: [...prev.photos, ...Array.from(e.target.files)] }));
+        setFormData((prev) => ({ ...prev, photos: [...prev.photos, ...Array.from(e.target.files)] }));
         setError("");
         setSuccess("");
     };
 
     const removePhoto = (index) => {
-        setFormData(prev => ({
+        setFormData((prev) => ({
             ...prev,
             photos: prev.photos.filter((_, i) => i !== index)
         }));
@@ -80,6 +81,8 @@ export default function MakeModel({ userData, setUserData }) {
     const handleSubmit = async () => {
         setError("");
         setSuccess("");
+
+        // Проверяем лимит карточек через запрос или мок-данные
         try {
             let limitReached = false;
 
@@ -113,25 +116,52 @@ export default function MakeModel({ userData, setUserData }) {
             return;
         }
 
-        if (!formData.name || !formData.height || !formData.weight || !formData.bustSize || !formData.phoneNumber || !formData.city) {
+        if (
+            !formData.name ||
+            !formData.height ||
+            !formData.weight ||
+            !formData.bustSize ||
+            !formData.phoneNumber ||
+            !formData.city
+        ) {
             setError(t("fill_all_fields_min_photos"));
             return;
         }
 
-        const requestData = {
-            telegramId: userData.telegramId,
-            ...formData
-        };
+        // Создаем объект FormData для передачи файлов вместе с другими данными
+        const formDataToSend = new FormData();
+        formDataToSend.append("telegramId", userData.telegramId);
+        formDataToSend.append("name", formData.name);
+        formDataToSend.append("height", formData.height);
+        formDataToSend.append("weight", formData.weight);
+        formDataToSend.append("city", formData.city);
+        formDataToSend.append("bustSize", formData.bustSize);
+        formDataToSend.append("phoneNumber", formData.phoneNumber);
+        formDataToSend.append("description", formData.description);
+
+        // Если услуг несколько – добавляем каждую как отдельное значение
+        formData.selectedServices.forEach((serviceId) => {
+            formDataToSend.append("selectedServices", serviceId);
+        });
+
+        // Добавляем фотографии
+        formData.photos.forEach((file) => {
+            formDataToSend.append("photos", file);
+        });
 
         try {
             if (BackendConfig.useMockData) {
-                console.log("Mock submission: ", requestData, `${BackendConfig.modelEndpoint}`);
-                setUserData(prev => ({ ...prev, has_model: prev.has_model + 1 }));
+                console.log("Mock submission: ", formDataToSend, `${BackendConfig.modelEndpoint}`);
+                setUserData((prev) => ({ ...prev, has_model: prev.has_model + 1 }));
                 setSuccess(t("submission_success"));
             } else {
-                const response = await axios.post(`${BackendConfig.modelEndpoint}`, requestData);
+                const response = await axios.post(`${BackendConfig.modelEndpoint}`, formDataToSend, {
+                    headers: {
+                        "Content-Type": "multipart/form-data"
+                    }
+                });
                 if (response.data.success) {
-                    setUserData(prev => ({ ...prev, has_model: prev.has_model + 1 }));
+                    setUserData((prev) => ({ ...prev, has_model: prev.has_model + 1 }));
                     setSuccess(t("submission_success"));
                 } else {
                     setError(t("submission_failed"));
@@ -160,8 +190,10 @@ export default function MakeModel({ userData, setUserData }) {
             <div className="make-model-block">
                 <label>{t("bust_size")} *</label>
                 <select name="bustSize" value={formData.bustSize} onChange={handleChange} required defaultValue="A">
-                    {["A", "B", "C", "D", "E"].map(size => (
-                        <option key={size} value={size}>{size}</option>
+                    {["A", "B", "C", "D", "E"].map((size) => (
+                        <option key={size} value={size}>
+                            {size}
+                        </option>
                     ))}
                 </select>
             </div>
@@ -172,6 +204,10 @@ export default function MakeModel({ userData, setUserData }) {
             <div className="make-model-block">
                 <label>{t("city")} *</label>
                 <input name="city" value={formData.city} onChange={handleChange} required />
+            </div>
+            <div className="make-model-block">
+                <label>{t("description")}</label>
+                <textarea name="description" value={formData.description} onChange={handleChange} />
             </div>
             <div className="make-model-block">
                 <label>{t("choose_services")} *</label>
@@ -195,8 +231,14 @@ export default function MakeModel({ userData, setUserData }) {
                     <div className="photo-preview">
                         {formData.photos.map((photo, index) => (
                             <div key={index} className="photo-wrapper">
-                                <img src={URL.createObjectURL(photo)} alt={`preview-${index}`} className="photo-thumbnail" />
-                                <button className="remove-photo" onClick={() => removePhoto(index)}>✖</button>
+                                <img
+                                    src={URL.createObjectURL(photo)}
+                                    alt={`preview-${index}`}
+                                    className="photo-thumbnail"
+                                />
+                                <button className="remove-photo" onClick={() => removePhoto(index)}>
+                                    ✖
+                                </button>
                             </div>
                         ))}
                     </div>
@@ -204,7 +246,9 @@ export default function MakeModel({ userData, setUserData }) {
             </div>
             {error && <p className="error-message">{error}</p>}
             {success && <p className="success-message">{success}</p>}
-            <button className="make-model-button" onClick={handleSubmit}>{t("submit")}</button>
+            <button className="make-model-button" onClick={handleSubmit}>
+                {t("submit")}
+            </button>
         </div>
     );
 }

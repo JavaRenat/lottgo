@@ -9,9 +9,9 @@ export default function SingeContext({content, userData, setUserData}) {
     const {t} = useTranslation();
     const {
         id,
+        title,
         poster_path,
         bitcoin_price_at,
-        title,
         participation_price_usd
     } = content;
 
