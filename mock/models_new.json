@@ -3,14 +3,14 @@
     {
       "id": 1,
       "telegramId": 12345678,
-      "name": "Alina",
+      "name": "New Alina",
       "height": "160",
       "weight": "50",
       "city": "Москва",
       "bustSize": "A",
       "phoneNumber": "+78234782",
       "description": "some desk",
-      "status" : "created",
+      "status" : "new",
       "created_at" : "2025-02-02T20:09:11",
       "selectedServices": [
         "2"
@@ -24,14 +24,14 @@
     {
       "id": 2,
       "telegramId": 12345678,
-      "name": "Alina 2",
+      "name": "New Aline 2",
       "height": "160",
       "weight": "50",
       "city": "Москва",
       "bustSize": "A",
       "phoneNumber": "+78234782",
       "description": "some desk",
-      "status" : "created",
+      "status" : "new",
       "created_at" : "2025-02-02T20:09:11",
       "selectedServices": [
         "2"
