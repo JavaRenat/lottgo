@@ -1,0 +1,21 @@
+{
+  "id": 1,
+  "telegramId": 12345678,
+  "name": "Alina",
+  "height": "160",
+  "weight": "50",
+  "city": "Москва",
+  "bustSize": "A",
+  "phoneNumber": "+78234782",
+  "description": "some desk",
+  "status" : "created",
+  "created_at" : "2025-02-02T20:09:11",
+  "selectedServices": [
+    "2"
+  ],
+  "photos": [
+    "photo_2024-03-15_12-42-26.jpg",
+    "photo_2024-03-15_12-42-39.jpg",
+    "photo_2024-03-15_12-42-50.jpg"
+  ]
+}
